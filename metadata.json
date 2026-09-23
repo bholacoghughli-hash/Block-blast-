@@ -1,0 +1,6 @@
+{
+  "name": "Block Blast",
+  "description": "A fun offline Block Blast puzzle game. Place geometric blocks on the 8x8 grid, clear rows and columns, build combos, and beat your high score. Created by Bhaskar.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
