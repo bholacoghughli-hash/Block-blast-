@@ -11,9 +11,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import com.example.ads.AdManager
 import com.example.model.GameScreenState
 import com.example.ui.screens.AboutScreen
 import com.example.ui.screens.GameScreen
@@ -30,14 +32,31 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        // Safe AdMob initialization
+        try {
+            AdManager.initialize(applicationContext)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
         setContent {
             val uiState by viewModel.uiState.collectAsState()
 
-            // Proper Android Back button handling
             BackHandler(enabled = true) {
                 val handled = viewModel.handleBackPress()
                 if (!handled) {
                     finish()
+                }
+            }
+
+            // Game over hone par interstitial ad call
+            LaunchedEffect(uiState.currentScreen) {
+                if (uiState.currentScreen == GameScreenState.GAME_OVER) {
+                    try {
+                        AdManager.showInterstitial(this@MainActivity)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
 
@@ -94,9 +113,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-/**
- * Retained for backward-compatibility with template unit/screenshot tests.
- */
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(text = "Hello $name!", modifier = modifier)
