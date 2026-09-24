@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Safe AdMob initialization
+        // Ads ko initialize karein
         try {
             AdManager.initialize(applicationContext)
         } catch (e: Exception) {
@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 }
             }
 
-            // Game over hone par interstitial ad call
+            // ================= YAHAN PAR PASTE HOGA =================
             LaunchedEffect(uiState.currentScreen) {
                 if (uiState.currentScreen == GameScreenState.GAME_OVER) {
                     try {
@@ -59,6 +59,7 @@ class MainActivity : ComponentActivity() {
                     }
                 }
             }
+            // ========================================================
 
             MyApplicationTheme(themeMode = uiState.themeMode) {
                 Surface(
