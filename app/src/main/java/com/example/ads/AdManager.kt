@@ -12,10 +12,8 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 object AdManager {
-    // Testing ke liye Google ki official test ID (Real publish ke waqt wapas replace kar sakte hain)
-    private const val AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
-    
-    // Real ID: "ca-app-pub-4230427204236879/4360396847"
+    // Aapka Real Interstitial Ad Unit ID
+    private const val AD_UNIT_ID = "ca-app-pub-4230427204236879/4360396847"
 
     private var interstitialAd: InterstitialAd? = null
     private var isLoading = false
