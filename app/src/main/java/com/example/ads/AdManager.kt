@@ -12,8 +12,8 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 
 object AdManager {
-    // Aapka Real Interstitial Ad Unit ID
-    private const val AD_UNIT_ID = "ca-app-pub-4230427204236879/4360396847"
+    // Aapka naya Block Blast Interstitial Ad Unit ID
+    private const val AD_UNIT_ID = "ca-app-pub-4230427204236879/3267263872"
 
     private var interstitialAd: InterstitialAd? = null
     private var isLoading = false
